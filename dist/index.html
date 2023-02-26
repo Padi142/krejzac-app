@@ -1,0 +1,36 @@
+<!DOCTYPE html><html><head>
+    <link rel="stylesheet" href="/tailwind-9b142ac7b13dd573.css">
+
+    <meta charset="utf-8">
+    <title>Krejzac App</title>
+
+<link rel="preload" href="/krejzac-app-2618a0a85d8c285a_bg.wasm" as="fetch" type="application/wasm" crossorigin="">
+<link rel="modulepreload" href="/krejzac-app-2618a0a85d8c285a.js"></head>
+<body><script type="module">import init from '/krejzac-app-2618a0a85d8c285a.js';init('/krejzac-app-2618a0a85d8c285a_bg.wasm');</script><script>(function () {
+    var protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+    var url = protocol + '//' + window.location.host + '/_trunk/ws';
+    var poll_interval = 5000;
+    var reload_upon_connect = () => {
+        window.setTimeout(
+            () => {
+                // when we successfully reconnect, we'll force a
+                // reload (since we presumably lost connection to
+                // trunk due to it being killed, so it will have
+                // rebuilt on restart)
+                var ws = new WebSocket(url);
+                ws.onopen = () => window.location.reload();
+                ws.onclose = reload_upon_connect;
+            },
+            poll_interval);
+    };
+
+    var ws = new WebSocket(url);
+    ws.onmessage = (ev) => {
+        const msg = JSON.parse(ev.data);
+        if (msg.reload) {
+            window.location.reload();
+        }
+    };
+    ws.onclose = reload_upon_connect;
+})()
+</script></body></html>
