@@ -6,4 +6,4 @@ RUN rustup target add wasm32-unknown-unknown
 
 EXPOSE 8000
 
-CMD "trunk serve"
+CMD ["backend","serve"]
