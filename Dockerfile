@@ -7,6 +7,6 @@ RUN rustup target add wasm32-unknown-unknown
 WORKDIR /app
 COPY . .
 
-EXPOSE 8000
+EXPOSE 8080
 
 CMD ["trunk","serve"]
