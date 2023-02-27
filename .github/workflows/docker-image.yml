@@ -32,5 +32,5 @@ jobs:
           builder: ${{ steps.buildx.outputs.name }}
           push: true
           tags: '${{ secrets.REGISTRY_URL }}/krejzac-app:latest'
-          #cache-from: 'type=registry,ref=${{ secrets.REGISTRY_URL }}/krejzac-app:buildcache'
-          #cache-to: 'type=registry,ref=${{ secrets.REGISTRY_URL }}/krejzac-app:buildcache,mode=max'
+          cache-from: 'type=registry,ref=${{ secrets.REGISTRY_URL }}/krejzac-app:buildcache'
+          cache-to: 'type=registry,ref=${{ secrets.REGISTRY_URL }}/krejzac-app:buildcache,mode=max'
