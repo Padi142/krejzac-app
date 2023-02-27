@@ -9,4 +9,4 @@ COPY . .
 
 EXPOSE 8080
 
-CMD ["trunk","serve","--address","0.0.0.0"]
+CMD ["trunk","serve","--release","--address","0.0.0.0"]
